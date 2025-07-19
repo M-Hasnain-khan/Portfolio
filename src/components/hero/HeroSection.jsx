@@ -67,7 +67,7 @@ const HeroSection = () => {
         { x: 150, y: -150, delay: 0.2 }, // CSS3
         { x: -150, y: 0, delay: 0.3 }, // React
         { x: 150, y: 100, delay: 0.4 }, // Next.js
-        { x: 127, y: -280, delay: 0.5 }, // MongoDB (above underscore)
+        { x: 110, y: -290, delay: 0.5 }, // MongoDB (above underscore)
         { x: -150, y: 200, delay: 0.6 }, // Node.js
       ]
     : isTablet
