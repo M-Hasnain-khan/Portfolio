@@ -8,10 +8,12 @@ const HeroSection = () => {
   const roles = ['MERN Stack', 'Web Developer', 'Web Designer'];
   const [currentRole, setCurrentRole] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
+      setIsTablet(window.innerWidth >= 768 && window.innerWidth < 1024);
     };
     handleResize();
     window.addEventListener('resize', handleResize);
@@ -32,37 +34,67 @@ const HeroSection = () => {
   };
 
   const iconVariants = {
-    initial: { opacity: 0, scale: 0.5 },
+    initial: { opacity: 0, scale: 0.5, x: 0, y: 0 },
     animate: (custom) => ({
       opacity: 0.9,
       scale: 1,
       x: custom.x,
       y: custom.y,
-      transition: { duration: 1, delay: custom.delay },
+      transition: { duration: 1, delay: custom.delay, ease: 'easeOut' },
     }),
     hover: { scale: 1.3, transition: { duration: 0.3 } },
   };
 
+  const mongodbVariants = {
+    initial: { opacity: 0, scale: 0.5, x: 0, y: 0 },
+    animate: (custom) => ({
+      opacity: 0.9,
+      scale: 1,
+      x: custom.x,
+      y: custom.y,
+      transition: { duration: 1, delay: custom.delay, ease: 'easeOut' },
+    }),
+    hover: {
+      scale: 1.3,
+      boxShadow: '0 0 10px rgba(0, 255, 178, 0.5)',
+      transition: { duration: 0.3 },
+    },
+  };
+
   const iconPositions = isMobile
     ? [
-        { x: -250, y: -250, delay: 0.1 },
-        { x: 180, y: -180, delay: 0.2 },
-        { x: -190, y: -10, delay: 0.3 },
-        { x: 170, y: 90, delay: 0.4 },
-        { x: 127, y: -274, delay: 0.5 },
-        { x: -180, y: 290, delay: 0.6 },
+        { x: -150, y: -150, delay: 0.1 }, // HTML5
+        { x: 150, y: -150, delay: 0.2 }, // CSS3
+        { x: -150, y: 0, delay: 0.3 }, // React
+        { x: 150, y: 100, delay: 0.4 }, // Next.js
+        { x: 127, y: -280, delay: 0.5 }, // MongoDB (above underscore)
+        { x: -150, y: 200, delay: 0.6 }, // Node.js
+      ]
+    : isTablet
+    ? [
+        { x: -200, y: 150, delay: 0.1 }, // HTML5
+        { x: 200, y: -150, delay: 0.2 }, // CSS3
+        { x: -300, y: -200, delay: 0.3 }, // React
+        { x: 200, y: 200, delay: 0.4 }, // Next.js
+        { x: -160, y: -140, delay: 0.5 }, // MongoDB (above underscore)
+        { x: 300, y: 150, delay: 0.6 }, // Node.js
       ]
     : [
-        { x: -350, y: 230, delay: 0.1 },
-        { x: 220, y: -190, delay: 0.2 },
-        { x: -580, y: -280, delay: 0.3 },
-        { x: 160, y: 240, delay: 0.4 },
-        { x: -249, y: -160, delay: 0.5 },
-        { x: 520, y: 190, delay: 0.6 },
+        { x: -350, y: 230, delay: 0.1 }, // HTML5
+        { x: 220, y: -190, delay: 0.2 }, // CSS3
+        { x: -580, y: -280, delay: 0.3 }, // React
+        { x: 160, y: 240, delay: 0.4 }, // Next.js
+        { x: -250, y: -170, delay: 0.5 }, // MongoDB (above underscore)
+        { x: 520, y: 190, delay: 0.6 }, // Node.js
       ];
 
   const techIcons = [
-    <FaHtml5 />, <FaCss3Alt />, <FaReact />, <SiNextdotjs />, <SiMongodb />, <FaNodeJs />
+    <FaHtml5 />,
+    <FaCss3Alt />,
+    <FaReact />,
+    <SiNextdotjs />,
+    <SiMongodb />,
+    <FaNodeJs />,
   ];
 
   const buttonVariants = {
@@ -84,15 +116,17 @@ const HeroSection = () => {
           <motion.div
             key={index}
             custom={iconPositions[index]}
-            variants={iconVariants}
+            variants={index === 4 ? mongodbVariants : iconVariants}
             initial="initial"
             animate="animate"
             whileHover="hover"
             className="absolute"
           >
             <Icon.type
-              size={isMobile ? 28 : 50}
-              className="text-[#0F9D58] opacity-90"
+              size={isMobile ? 28 : isTablet ? 40 : 50}
+              className={`text-[#0F9D58] opacity-90 cursor-pointer ${
+                index === 4 ? 'drop-shadow-[0_0_5px_rgba(0,255,178,0.5)]' : ''
+              }`}
             />
           </motion.div>
         ))}
@@ -107,7 +141,7 @@ const HeroSection = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Hi, I'm <span className="text-[#0F9D58]">M-Hasna_n</span>
+            Hi, I'm <span className="text-[#0F9D58] relative">M-Hasna_n</span>
           </motion.h1>
 
           <div className="h-16">
@@ -137,7 +171,7 @@ const HeroSection = () => {
           <div className="flex justify-center md:justify-start space-x-4">
             <motion.a
               href="#contact"
-              className="bg-[#0F9D58] text-white px-6 py-3 rounded-full font-medium hover:bg-[#066442]"
+              className="bg-[#0F9D58] text-white px-6 py-3 rounded-full font-medium cursor-pointer hover:bg-[#066442]"
               variants={buttonVariants}
               whileHover="hover"
               whileTap="tap"
@@ -146,7 +180,7 @@ const HeroSection = () => {
             </motion.a>
             <motion.a
               href="#projects"
-              className="border-2 border-[#0F9D58] text-[#0F9D58] px-6 py-3 rounded-full font-medium hover:bg-[#0F9D58] hover:text-white"
+              className="border-2 border-[#0F9D58] text-[#0F9D58] px-6 py-3 rounded-full font-medium cursor-pointer hover:bg-[#0F9D58] hover:text-white"
               variants={buttonVariants}
               whileHover="hover"
               whileTap="tap"
@@ -166,7 +200,7 @@ const HeroSection = () => {
           <div className="w-52 h-52 md:w-80 md:h-80 bg-white rounded-full border-4 border-[#0F9D58] shadow-2xl overflow-hidden flex items-center justify-center">
             <img
               src="https://via.placeholder.com/400"
-              alt="M-Hasnain"
+              alt="M-Hasna_n"
               className="w-full h-full object-cover"
             />
           </div>
