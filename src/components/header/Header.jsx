@@ -1,18 +1,26 @@
 'use client';
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaBars, FaTimes, FaHome, FaUser, FaCode, FaEnvelope } from 'react-icons/fa';
+import {
+  FaBars,
+  FaTimes,
+  FaHome,
+  FaUser,
+  FaLaptopCode,
+  FaTools,
+  FaEnvelope,
+} from 'react-icons/fa';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => setIsOpen(!isOpen);
 
   const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Home', href: '#herosection',id: 'herosection',},
+    { name: 'About', href: '#about', id: 'about' },
+    { name: 'Skills', href: '#skills', id: 'skills' },
+    { name: 'Projects', href: '#projects', id: 'projects' },
+    { name: 'Contact', href: '#contact', id: 'contact' },
   ];
 
   const linkVariants = {
@@ -43,8 +51,9 @@ const Header = () => {
 
   return (
     <>
-      {/* === Desktop Header (unchanged) === */}
+      {/* === Desktop Header === */}
       <motion.header
+      id="header"
         className="bg-white/80 backdrop-blur-md shadow-md fixed w-full top-0 z-50 border-b border-[#0F9D58]/20 hidden md:block"
         initial={{ y: -100 }}
         animate={{ y: 0 }}
@@ -58,7 +67,8 @@ const Header = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <span className="text-[#0F9D58]">M-</span>Hasnain
+            <span className="text-black">M-</span>
+            <span className="text-[#0F9D58] glow">Hasnain</span>
           </motion.h1>
 
           {/* Desktop Nav */}
@@ -80,15 +90,14 @@ const Header = () => {
           {/* CTA Button */}
           <motion.a
             href="#contact"
-            className="hidden md:block bg-[#0F9D58] text-white px-5 py-2 rounded-full font-medium hover:bg-[#0c7b45] transition-colors shadow-md"
-            whileHover={{ scale: 1.05, boxShadow: '0 0 12px rgba(15, 157, 88, 0.4)' }}
+            className="hidden md:block bg-gradient-to-r from-emerald-600 to-green-600 text-white px-6 py-2 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-200"
+            whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             Contact Me
           </motion.a>
         </div>
       </motion.header>
-
 
       {/* === Mobile Slide Menu === */}
       <motion.nav
@@ -112,7 +121,7 @@ const Header = () => {
           <motion.li variants={linkVariants} whileHover={{ scale: 1.05 }}>
             <a
               href="#contact"
-              className="bg-[#0F9D58] text-white px-5 py-2 rounded-full font-medium hover:bg-[#0c7b45]"
+              className="bg-gradient-to-r from-emerald-600 to-green-600 text-white px-6 py-2 rounded-full font-semibold text-sm shadow-lg hover:shadow-xl transition-all duration-200"
             >
               Contact Me
             </a>
@@ -120,24 +129,28 @@ const Header = () => {
         </ul>
       </motion.nav>
 
-      {/* === Bottom Nav for Mobile/Tablet === */}
+      {/* === Bottom Nav (Mobile / Tablet) === */}
       <div className="fixed bottom-0 left-0 right-0 bg-white shadow-t border-t border-[#0F9D58]/20 md:hidden z-50">
-        <div className="flex justify-around items-center py-2 px-3">
+        <div className="flex justify-around items-center py-1.5 px-2">
           <a href="#home" className="flex flex-col items-center text-[#0F9D58]">
-            <FaHome className="text-xl mb-1" />
-            <span className="text-[10px] font-medium">Home</span>
+            <FaHome className="text-lg mb-0.5" />
+            <span className="text-[9px] font-medium">Home</span>
           </a>
           <a href="#about" className="flex flex-col items-center text-gray-500 hover:text-[#0F9D58] transition-all">
-            <FaUser className="text-xl mb-1" />
-            <span className="text-[10px] font-medium">About</span>
+            <FaUser className="text-lg mb-0.5" />
+            <span className="text-[9px] font-medium">About</span>
+          </a>
+          <a href="#skills" className="flex flex-col items-center text-gray-500 hover:text-[#0F9D58] transition-all">
+            <FaTools className="text-lg mb-0.5" />
+            <span className="text-[9px] font-medium">Skills</span>
           </a>
           <a href="#projects" className="flex flex-col items-center text-gray-500 hover:text-[#0F9D58] transition-all">
-            <FaCode className="text-xl mb-1" />
-            <span className="text-[10px] font-medium">Projects</span>
+            <FaLaptopCode className="text-lg mb-0.5" />
+            <span className="text-[9px] font-medium">Projects</span>
           </a>
           <a href="#contact" className="flex flex-col items-center text-gray-500 hover:text-[#0F9D58] transition-all">
-            <FaEnvelope className="text-xl mb-1" />
-            <span className="text-[10px] font-medium">Contact</span>
+            <FaEnvelope className="text-lg mb-0.5" />
+            <span className="text-[9px] font-medium">Contact</span>
           </a>
         </div>
       </div>
