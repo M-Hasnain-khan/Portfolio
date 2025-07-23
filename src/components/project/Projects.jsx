@@ -19,6 +19,10 @@ import { HiSparkles } from "react-icons/hi"
 
 // Import Trading image
 import Trading from "@/assets/trading.png"
+import Hospital from "@/assets/health.png"
+import Store from "@/assets/store.png"
+import Food from "@/assets/food.png"
+import Tech from "@/assets/tech.png"
 
 const Projects = () => {
   const projectsRef = useRef(null)
@@ -65,8 +69,8 @@ const Projects = () => {
       ],
       stats: { views: "18.7K", stars: "342", forks: "87" },
       color: "from-blue-500 to-purple-500",
-      liveUrl: "https://trading-platform-demo.vercel.app",
-      githubUrl: "https://github.com/username/trading-platform",
+      liveUrl: "https://trading-beta-hazel.vercel.app/home",
+      githubUrl: "",
     },
     {
       id: 2,
@@ -75,7 +79,7 @@ const Projects = () => {
       description: "Modern e-commerce platform with AI-powered recommendations and seamless checkout experience.",
       longDescription:
         "Complete e-commerce ecosystem featuring intelligent product recommendations, real-time inventory management, secure payment processing, and comprehensive analytics dashboard.",
-      image: "/placeholder.svg?height=400&width=600&text=E-Commerce+Platform",
+      image: Store,
       technologies: [
         { icon: SiNextdotjs, name: "Next.js", color: "#000000" },
         { icon: SiMongodb, name: "MongoDB", color: "#47A248" },
@@ -84,17 +88,17 @@ const Projects = () => {
       ],
       stats: { views: "12.5K", stars: "234", forks: "45" },
       color: "from-purple-500 to-pink-500",
-      liveUrl: "https://ecommerce-demo.vercel.app",
-      githubUrl: "https://github.com/username/ecommerce-platform",
+      liveUrl: "",
+      githubUrl: "",
     },
     {
       id: 3,
-      title: "AI Task Manager",
-      subtitle: "Smart Productivity",
-      description: "Intelligent task management with AI-powered scheduling and team collaboration features.",
+      title: "Food Delivery App",
+      subtitle: "Food",
+      description: "AI-powered food delivery app with smart scheduling and real-time tracking.",
       longDescription:
-        "Revolutionary task management platform that uses machine learning to optimize schedules, predict deadlines, and enhance team productivity through smart automation.",
-      image: "/placeholder.svg?height=400&width=600&text=AI+Task+Manager",
+        "Intelligent food delivery application featuring AI-driven order scheduling, real-time tracking, and personalized recommendations for a seamless user experience.",
+      image: Food,
       technologies: [
         { icon: SiReact, name: "React", color: "#61DAFB" },
         { icon: SiFirebase, name: "Firebase", color: "#FFCA28" },
@@ -103,17 +107,17 @@ const Projects = () => {
       ],
       stats: { views: "8.3K", stars: "189", forks: "32" },
       color: "from-blue-500 to-cyan-500",
-      liveUrl: "https://ai-task-manager.vercel.app",
-      githubUrl: "https://github.com/username/ai-task-manager",
+      liveUrl: "",
+      githubUrl: "",
     },
     {
       id: 4,
       title: "Weather Analytics",
-      subtitle: "Climate Intelligence",
-      description: "Advanced weather forecasting with climate data visualization and predictive analytics.",
+      subtitle: "Healthcare",
+      description: "Hospital management system with real-time patient tracking and AI diagnostics.",
       longDescription:
-        "Comprehensive weather intelligence platform featuring real-time climate monitoring, predictive modeling, and interactive data visualizations for weather enthusiasts and professionals.",
-      image: "/placeholder.svg?height=400&width=600&text=Weather+Analytics",
+        "Comprehensive hospital management system featuring real-time patient tracking, AI-powered diagnostics, and secure data management for efficient healthcare delivery.",
+      image: Hospital,
       technologies: [
         { icon: SiReact, name: "React", color: "#61DAFB" },
         { icon: SiJavascript, name: "JavaScript", color: "#F7DF1E" },
@@ -121,17 +125,17 @@ const Projects = () => {
       ],
       stats: { views: "15.7K", stars: "312", forks: "67" },
       color: "from-green-500 to-emerald-500",
-      liveUrl: "https://weather-analytics.vercel.app",
-      githubUrl: "https://github.com/username/weather-analytics",
+      liveUrl: "",
+      githubUrl: "",
     },
     {
       id: 5,
-      title: "Social Connect API",
-      subtitle: "Backend Architecture",
-      description: "Scalable social media backend with real-time messaging and advanced security features.",
+      title: "Technology Blog",
+      subtitle: "Tech Blog",
+      description: "Technology blog with AI-generated content and interactive features.",
       longDescription:
-        "High-performance backend infrastructure supporting millions of users with real-time communication, advanced security protocols, and microservices architecture.",
-      image: "/placeholder.svg?height=400&width=600&text=Social+Connect+API",
+        "Dynamic technology blog platform featuring AI-generated content, interactive discussions, and personalized user experiences for tech enthusiasts.",
+      image: Tech,
       technologies: [
         { icon: SiNodedotjs, name: "Node.js", color: "#339933" },
         { icon: SiExpress, name: "Express", color: "#000000" },
@@ -140,8 +144,8 @@ const Projects = () => {
       ],
       stats: { views: "9.1K", stars: "156", forks: "28" },
       color: "from-orange-500 to-red-500",
-      liveUrl: "https://social-connect-api.vercel.app",
-      githubUrl: "https://github.com/username/social-connect-api",
+      liveUrl: "",
+      githubUrl: "",
     },
   ]
 
