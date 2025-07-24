@@ -2,7 +2,6 @@
 
 import './globals.css';
 import { Geist, Geist_Mono } from 'next/font/google';
-import Script from 'next/script';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -22,13 +21,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <head />
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        {/* ✅ D-ID Agent Script */}
-        <Script
+      <head>
+        {/* ✅ D-ID Agent Script as raw HTML script */}
+        <script
           type="module"
           src="https://agent.d-id.com/v2/index.js"
-          strategy="afterInteractive"
           data-mode="fabio"
           data-client-key="Z29vZ2xlLW9hdXRoMnwxMDU5NjcyNDAwMjI0MjgyNDc2NTg6MjY3SzVKUFg5VU5iUTdCdmZpUnNN"
           data-agent-id="v2_agt_e3FkINM7"
@@ -36,9 +33,9 @@ export default function RootLayout({ children }) {
           data-monitor="true"
           data-orientation="horizontal"
           data-position="right"
-        />
-        
-        {/* ✅ Your Pages/Components Render Here */}
+        ></script>
+      </head>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {children}
       </body>
     </html>
