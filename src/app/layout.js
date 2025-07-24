@@ -2,6 +2,7 @@
 
 import './globals.css';
 import { Geist, Geist_Mono } from 'next/font/google';
+import Script from 'next/script'; // ✅ Import Script from Next.js
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -22,10 +23,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth">
       <head>
-        {/* ✅ D-ID Agent Script as raw HTML script */}
-        <script
-          type="module"
+        {/* Head content is optional in Next.js app router layout, so no need to manually put <head> here */}
+      </head>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        {/* ✅ Correct script loading using next/script */}
+        <Script
+          strategy="beforeInteractive"
           src="https://agent.d-id.com/v2/index.js"
+          type="module"
           data-mode="fabio"
           data-client-key="Z29vZ2xlLW9hdXRoMnwxMDU5NjcyNDAwMjI0MjgyNDc2NTg6MjY3SzVKUFg5VU5iUTdCdmZpUnNN"
           data-agent-id="v2_agt_e3FkINM7"
@@ -33,9 +38,7 @@ export default function RootLayout({ children }) {
           data-monitor="true"
           data-orientation="horizontal"
           data-position="right"
-        ></script>
-      </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        />
         {children}
       </body>
     </html>
